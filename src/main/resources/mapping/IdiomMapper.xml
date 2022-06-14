@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.idiom_backend.mapper.IdiomMapper">
+
+    <select id="getIdiomByName" resultType="com.example.idiom_backend.bean.IdiomBean">
+        select * from common where idiom = #{name}
+    </select>
+    <select id="getIdiomByIndex" resultType="com.example.idiom_backend.bean.IdiomBean">
+        select * from common limit #{index},1
+    </select>
+    <select id="getIdiomByLikelyName" resultType="String">
+        select idiom from common where idiom like concat('%',#{name},'%')
+    </select>
+    <select id="getAllIdiom" resultType="com.example.idiom_backend.bean.IdiomBean">
+        select * from common
+    </select>
+    <select id="getIdiomCount" resultType="Integer">
+        select count(*) from common
+    </select>
+
+    <select id="getXingIdiomCount" resultType="Integer">
+        select count(*) from xing
+    </select>
+    <select id="getXingIdiomByIndex" resultType="com.example.idiom_backend.bean.XingIdiomBean">
+        select * from xing limit #{index},1
+    </select>
+
+    <select id="getYinIdiomCount" resultType="Integer">
+        select count(*) from yin
+    </select>
+    <select id="getYinIdiomByIndex" resultType="com.example.idiom_backend.bean.YinIdiomBean">
+        select * from yin limit #{index},1
+    </select>
+
+    <select id="getYiIdiomCount" resultType="Integer">
+        select count(*) from yi
+    </select>
+    <select id="getYiIdiomByIndex" resultType="com.example.idiom_backend.bean.YiIdiomBean">
+        select * from yi limit #{index},1
+    </select>
+
+</mapper>
